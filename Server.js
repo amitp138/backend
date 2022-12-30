@@ -1,9 +1,8 @@
 import express from 'express';
 import morgan from 'morgan';
 import cors from 'cors';
-import { config } from 'dotenv';
 import router from './router/route.js';
-
+const PORT=5000;
  
 /** import connection file */
 import connect from './database/conn.js';
@@ -19,7 +18,7 @@ config();
 
 
 /** appliation port */
-const port = PORT || 8080;
+const port = process.env.PORT || 8080;
 
 
 /** routes */
@@ -38,7 +37,7 @@ app.get('/', (req, res) => {
 /** start server only when we have valid connection */
 connect().then(() => {
     try {
-        app.listen(process.env.PORT || 3001, () => {
+        app.listen(port, () => {
             console.log(`Server connected to http://localhost:${port}`)
         })
     } catch (error) {
