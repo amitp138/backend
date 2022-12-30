@@ -14,7 +14,7 @@ const app = express()
 app.use(morgan('tiny'));
 app.use(cors());
 app.use(express.json());
-config();
+
 
 
 /** appliation port */
